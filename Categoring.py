@@ -1,6 +1,7 @@
 import os
 import json
 import pandas
+import openpyxl
 
 #데이터 불러오기
 simplePayMessagePath = os.path.join(os.path.dirname(__file__),"DB","1.json")
@@ -85,4 +86,4 @@ for i in range(len(zeroOneZeroCheck["messages"])):
         messages.append(message)
 
 results = pandas.DataFrame(data={"Time":dateTime,"message":messages})
-results.to_csv(os.path.dirname(__file__))
+results.to_excel(excel_writer=os.path.join(os.path.dirname(__file__),"results.xlsx"),engine="openpyxl")
